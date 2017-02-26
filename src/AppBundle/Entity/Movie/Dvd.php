@@ -14,4 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Dvd extends Movie
 {
     const DISCRIMINATOR = 'dvd';
+
+    /**
+     * @return string
+     */
+    public function getDiscriminator() {
+        return self::DISCRIMINATOR;
+    }
 }

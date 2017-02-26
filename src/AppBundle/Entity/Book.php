@@ -21,7 +21,7 @@ class Book
      * @Assert\NotNull()
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $IsnbNumber;
+    private $isnbNumber;
 
     /**
      * @var string
@@ -61,20 +61,20 @@ class Book
     private $price;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIsnbNumber()
     {
-        return $this->IsnbNumber;
+        return $this->isnbNumber;
     }
 
     /**
-     * @param mixed $IsnbNumber
+     * @param string $isnbNumber
      * @return $this
      */
-    public function setIsnbNumber($IsnbNumber)
+    public function setIsnbNumber($isnbNumber)
     {
-        $this->IsnbNumber = $IsnbNumber;
+        $this->isnbNumber = $isnbNumber;
         return $this;
     }
 

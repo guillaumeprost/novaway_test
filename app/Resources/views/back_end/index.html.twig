@@ -1,0 +1,90 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="raw">
+    <div class="col-md-8">
+        <h1>Administration</h1>
+    </div>
+    </div>
+
+    <div class="raw">
+        <div class="col-md-8">
+            <h2>Livres</h2>
+        </div>
+        <div class="col-md-4">
+            <a type="button" class="btn btn-success" href="{{ url('create_book') }}">Ajouter Livre</a>
+        </div>
+        <div class="raw">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Numéro Isnb</th>
+                        <th>Titre</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <th scope="row">{{ book.id }}</th>
+                            <td>{{ book.isnbNumber }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>
+                                <a type="button" class="btn btn-success" href="{{ url('edit_book', {id: book.id}) }}">Editer</a>
+                                <a type="button" class="btn btn-danger" href="{{ url('delete_book', {id: book.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="raw">
+        <div class="col-md-8">
+            <h2>Movies</h2>
+        </div>
+        <div class="col-md-4">
+            <a type="button" class="btn btn-success" href="{{ url('create_dvd') }}">Ajouter Dvd</a>
+            <a type="button" class="btn btn-primary" href="{{ url('create_bluray') }}">Ajouter Bluray</a>
+        </div>
+        <div class="raw">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Numéro Isan</th>
+                        <th>Titre</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for movie in movies %}
+                        <tr>
+                            <th scope="row">{{ movie.id }}</th>
+                            <td>{{ movie.isanNumber }}</td>
+                            <td>{{ movie.title }}</td>
+                            <td>{{ movie.discriminator }}</td>
+                            <td>{% if movie.discriminator == constant('AppBundle\\Entity\\Movie\\Dvd::DISCRIMINATOR') %}
+                                    <a type="button" class="btn btn-success"
+                                       href="{{ url('edit_dvd', {id: movie.id}) }}">Editer</a>
+                                    <a type="button" class="btn btn-danger"
+                                       href="{{ url('delete_dvd', {id: movie.id}) }}">Supprimer</a>
+                                {% elseif movie.discriminator == constant('AppBundle\\Entity\\Movie\\Bluray::DISCRIMINATOR') %}
+                                    <a type="button" class="btn btn-success"
+                                       href="{{ url('edit_bluray', {id: movie.id}) }}">Editer</a>
+                                    <a type="button" class="btn btn-danger"
+                                       href="{{ url('delete_bluray', {id: movie.id}) }}">Supprimer</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="raw">
+        <div class="col-md-12">
+            <h1>{% if edition %}Edition{% else %}Creation{% endif %} de Dvd</h1>
+            <div class="raw">
+                <div class="col-md-12">
+                    {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                    <div class="form-group">
+                        {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.isanNumber, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.director, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.releaseDate, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.time, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.summary, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.actors, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        <a type="button" href="{{ url('admin-list') }}" class="btn btn-default">Annuler</a>
+                        <input type="submit" value="{% if edition %}Editer{% else %}Créer{% endif %}" class="btn btn-success pull-right"/>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

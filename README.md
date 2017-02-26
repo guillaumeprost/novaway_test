@@ -21,3 +21,16 @@ Mettre à jour la base de donnée :
 Lancer le projet : 
 
 `php bin/console server:run`
+
+
+Administration
+--------------
+
+Accés à l'administration par la route
+
+`/admin`
+
+Identifiants : 
+    
+    Username : admin
+    Password : novaway

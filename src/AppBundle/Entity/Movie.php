@@ -13,12 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({
- *     "dvd"    = "AppBundle\Entity\Movie\Dvd",
- *     "bluray" = "AppBundle\Entity\Movie\Bluray"
- * })
  */
-abstract class Movie
+class Movie
 {
     use IdTrait;
 
@@ -141,24 +137,6 @@ abstract class Movie
     public function setReleaseDate($releaseDate)
     {
         $this->releaseDate = $releaseDate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumberPage()
-    {
-        return $this->numberPage;
-    }
-
-    /**
-     * @param mixed $numberPage
-     * @return $this
-     */
-    public function setNumberPage($numberPage)
-    {
-        $this->numberPage = $numberPage;
         return $this;
     }
 

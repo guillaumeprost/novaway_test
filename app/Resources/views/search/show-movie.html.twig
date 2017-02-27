@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="raw">
+        <div class="col-md-8">
+            <h1>{{ movie.title }}</h1>
+        </div>
+        <div class="col-md-4">
+            <a type="button" href="{{ url('search') }}" class="btn btn-default">Retour à la recherche</a>
+        </div>
+    </div>
+
+    <div class="raw">
+        <div class="col-md-12">
+            {% if movie.isanNumber|default %}Isan Number : {{ movie.isanNumber }}<br>{% endif %}
+            {% if movie.director|default %}Réalisateur : {{ movie.director }}<br>{% endif %}
+            {% if movie.releaseDate|default %}Date de sortie : {{ movie.releaseDate|date }}<br>{% endif %}
+            {% if movie.time|default %}Durée : {{ movie.time }}<br>{% endif %}
+            {% if movie.summary|default %}Résumé : {{ movie.summary }}<br>{% endif %}
+            {% if movie.price|default %}Prix : {{ movie.price }}<br>{% endif %}
+            {% if movie.actors|default %}Acteurs : {{ movie.actors }}<br>{% endif %}
+        </div>
+    </div>
+{% endblock %}

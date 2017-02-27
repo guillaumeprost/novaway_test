@@ -1,0 +1,71 @@
+<div class="raw">
+    <div class="col-md-8">
+        <h2>Films correspondant</h2>
+    </div>
+    {% if searchResults.movies|length %}
+        <div class="raw">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Numéro Isan</th>
+                        <th>Titre</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for movie in searchResults.movies %}
+                        <tr>
+                            <td>{{ movie.isanNumber }}</td>
+                            <td>{{ movie.title }}</td>
+                            <td>{{ movie.discriminator }}</td>
+                            <td><a type="button" href="{{ url('show_movie', {id: movie.id}) }}" class="btn btn-default">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="raw">
+            <div class="col-md-12">
+                Aucun Films correspondants
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="raw">
+    <div class="col-md-8">
+        <h2>Livres correspondant</h2>
+    </div>
+    {% if searchResults.books|length %}
+        <div class="raw">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Numéro Isnb</th>
+                        <th>Titre</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for book in searchResults.books %}
+                        <tr>
+                            <td>{{ book.isnbNumber }}</td>
+                            <td>{{ book.title }}</td>
+                            <td><a type="button" href="{{ url('show_book', {id: book.id}) }}" class="btn btn-default">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="raw">
+            <div class="col-md-12">
+                Aucun Livre correspondants
+            </div>
+        </div>
+    {% endif %}
+</div>

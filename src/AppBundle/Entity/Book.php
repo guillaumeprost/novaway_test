@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class Book
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repositories\BookRepository")
  */
 class Book
 {
@@ -59,6 +59,28 @@ class Book
      * @ORM\Column(type="float", nullable=true)
      */
     private $price;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * Book constructor.
+     */
+    function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
     /**
      * @return string

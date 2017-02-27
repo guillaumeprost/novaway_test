@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class Movie
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repositories\MovieRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  */
@@ -30,7 +30,7 @@ class Movie
      * @Assert\NotNull()
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $IsanNumber;
+    private $isanNumber;
 
     /**
      * @var string
@@ -69,6 +69,28 @@ class Movie
     private $actors;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * Book constructor.
+     */
+    function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
      * @return mixed
      */
     public function getTitle()
@@ -87,20 +109,20 @@ class Movie
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIsanNumber()
     {
-        return $this->IsanNumber;
+        return $this->isanNumber;
     }
 
     /**
-     * @param mixed $IsanNumber
+     * @param string $isanNumber
      * @return $this
      */
-    public function setIsanNumber($IsanNumber)
+    public function setIsanNumber($isanNumber)
     {
-        $this->IsanNumber = $IsanNumber;
+        $this->isanNumber = $isanNumber;
         return $this;
     }
 

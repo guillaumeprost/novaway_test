@@ -1,0 +1,55 @@
+<div class="raw">
+    <div class="col-md-8">
+        <h2>Dernier films</h2>
+    </div>
+    <div class="raw">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Numéro Isan</th>
+                    <th>Titre</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for movie in lastArticles.movies %}
+                    <tr>
+                        <td>{{ movie.isanNumber }}</td>
+                        <td>{{ movie.title }}</td>
+                        <td>{{ movie.discriminator }}</td>
+                        <td><a type="button" href="{{ url('show_movie', {id: movie.id}) }}" class="btn btn-default">Voir</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="raw">
+    <div class="col-md-8">
+        <h2>Dernier livres</h2>
+    </div>
+    <div class="raw">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Numéro Isnb</th>
+                    <th>Titre</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in lastArticles.books %}
+                    <tr>
+                        <td>{{ book.isnbNumber }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a type="button" href="{{ url('show_book', {id: book.id}) }}" class="btn btn-default">Voir</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

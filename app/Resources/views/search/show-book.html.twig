@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="raw">
+        <div class="col-md-8">
+            <h1>{{ book.title }}</h1>
+        </div>
+        <div class="col-md-4">
+            <a type="button" href="{{ url('search') }}" class="btn btn-default">Retour à la recherche</a>
+        </div>
+    </div>
+
+    <div class="raw">
+        <div class="col-md-12">
+            {% if book.isnbNumber|default %}Isnb Number : {{ book.isnbNumber }}<br>{% endif %}
+            {% if book.author|default %}Auteur : {{ book.author }}<br>{% endif %}
+            {% if book.parutionDate|default %}Date de parution : {{ book.parutionDate|date }}<br>{% endif %}
+            {% if book.numberPage|default %}Nombre de pages : {{ book.numberPage }}<br>{% endif %}
+            {% if book.summary|default %}Résumé : {{ book.summary }}<br>{% endif %}
+            {% if book.price|default %}Prix : {{ book.price }}<br>{% endif %}
+        </div>
+    </div>
+{% endblock %}
